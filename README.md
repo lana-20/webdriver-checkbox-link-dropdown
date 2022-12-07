@@ -111,7 +111,51 @@ But I do not manually open every link. Just like in automation, I do not test by
 
 How do I know, without opening a link, if I get an Error Code or not? Here I use something called the __Request Module__ from Python. I have to import/install that module, so that I can send a Request and receive a Response from the server. It's typically used for API testing, not for web testing. I utilize the Request Module to extract the _href_ attribute value. And then I send that value as a a part of the Request. I request something from the server by passing the URL (href attribute value). And the server gives a status back, called the Response. If the code is >= 400, there are no resources available on the web page.
 
+This is related to the API kind of testing. I use the Requests Module to verify the Broken Links.
+	
+To install the built-in Requests Module:
+	1. Go to  File > Settings > Project_name > Python Interpreter. 
+	2. Click on the plus ➕ button.
+	3. Type 'requests' in the search field.
+	4. Install Package : Python HTTP for Humans
+	
+Also, import the 'requests' package:
 
+	import requests as requests
+	from selenium import webdriver
+	from selenium.webdriver.common.by import By
+	
+	serv_obj = Service("...\chromedriver.exe")
+	driver = webdriver.Chrome(service=serv_ojb)
+	
+	driver.get("http://www.deadlinkcity.com/")
+	driver.maximize_window()
+	
+	# Capture all Links on web page
+	all_links = driver.find_elements(By.TAG_NAME, "a")
+	# Variable to count Broken Links later
+	count = 0
+	
+	# For loop to read individual values one by one
+	for link in all_links:
+		url = link.get_attribute('href')
+	
+		try:
+			response = requests.head()url
+		except:	
+			None
+		
+		if response.status_code >= 400:
+			print(url, "is a Broken Link")
+			count += 1
+		else:
+			print(url, "is a Valid Link")
+	
+	print("Total number of Broken Links:", count)
+	
+	
+	
+	
 
 <!-- blank line -->
 <br>
