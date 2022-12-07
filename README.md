@@ -93,13 +93,23 @@ __How to Handle a Broken Link__
 
 In Java, I have to use different types of classes. But in Python it's very easy.
 
-Requirement: How many broken links are on a web page?
+_Requirement:_ How many broken links are on a web page?
 
 Most times, in a Production Application, I don't see any broken links. But I need to find out a specific page that contains any number of broken links.
 
 Go to http://www.deadlinkcity.com/. A Broken Link doesn't have any target page. How do I find it? 
 
 Whenever I open a link on a web page and send a Broken Link request, I receive back a Response Code. All the links with a broken code return code >= 400. Normal links always number less than 400. If the code < 400, I call those Response Codes. These are the normal valid links with proper resources on a web server. But if there's any Broken Link, all the Response Codes atart with 400. 400+ codes are Broken Links.
+
+I verify how many (the total number of) broken links are on the page. Not only the total number, but also I display those broken links in the console window along with the normal links. Before that, I need to verify which link is brokem and which is normal.
+	
+First, I capture all the links on the web page. Then I read every link and open that link in the browser.
+	
+Another thing I can do is capture the _href_ attribute of every link (capture each link using its _href_ attribute). And then send a Request to the server by using that link. If I get an Error Code, a Status Response >= 400, I confirm it's a Broken Link. If it's not >= 400, I confirm it's a Valid Link.
+
+But I do not manually open every link. Just like in automation, I do not test by opening each link in a new tab/window. I just capture the _href_ of the link and senf that link to the server.
+
+How do I know, without opening a link, if I get an Error Code or not? Here I use something called the __Request Module__ from Python. I have to import/install that module, so that I can send a Request and receive a Response from the server. It's typically used for API testing, not for web testing. I utilize the Request Module to extract the _href_ attribute value. And then I send that value as a a part of the Request. I request something from the server by passing the URL (href attribute value). And the server gives a status back, called the Response. If the code is >= 400, there are no resources available on the web page.
 
 
 
