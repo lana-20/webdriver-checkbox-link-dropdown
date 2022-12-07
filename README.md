@@ -53,3 +53,60 @@ Suppose my requirement is to clear all the checkboxes in one shot. For both sele
            for checkbox in checkboxes:
             if checkbox.is_selected():
               checkbox.click()
+
+### Links
+
+The most frequently performed action on Links is __.click()__.
+
+Links:
+1) internal
+2) external
+3) broken link
+
+- __Internal Link__ - when clicked, it navigates to the same page.
+- __External Link__ - goes to some other web page when clicked.
+- __Broken Link__ - the link if available on my page, but it does not have any target page. When I perform the _.click()_ action on a broken link, I don't get anything. Usually, developers keep broken links for future implementation.
+
+Along with links, I also do some validation. On a web page, normally when I want to perform an action, I first identify the link and then perform the .click() action. 
+
+Every link has an __href__ attribute. __href = Hyperlink REFerence__.
+
+Identify the element using LINK_TEXT or PARTIAL_LINK_TEXT locator. Once I click the link, it automatically navigates to the target page. I use INK_TEXT most times. In PARTIAL_LINK_TEXT I pass a partial valye that can match some other elements.
+
+Find the number of links in a page. I have to have one common attribute. All the links have one common __href__ attribute. But the attribute value itself is not the same for every link. So I cannot use any attribute to locate the links. Ny using the TAG_NAME locator, I can identify all of them, because the tagname is usually an anchor tag <a>. When I use the tagname of <a>, it returns all the elements on the web page. I use a common locator.
+
+		links = driver.find_elements(By, TAB_NAME, "a")
+		print("Total number of links:", len(links))
+		
+Or, use the Xpath locator:
+		
+		links = driver.find_elements(By, XPATH, "//a")
+
+Now, I want to print the link names for all those links:
+
+		for link in links:
+			print(link.text)
+
+Some names may be blanks, because a link doesn't have  any text in HTML.
+
+__How to Handle a Broken Link__
+
+In Java, I have to use different types of classes. But in Python it's very easy.
+
+Requirement: How many broken links are on a web page?
+
+Most times, in a Production Application, I don't see any broken links. But I need to find out a specific page that contains any number of broken links.
+
+Go to http://www.deadlinkcity.com/. A Broken Link doesn't have any target page. How do I find it? 
+
+Whenever I open a link on a web page and send a Broken Link request, I receive back a Response Code. All the links with a broken code return code >= 400. Normal links always number less than 400. If the code < 400, I call those Response Codes. These are the normal valid links with proper resources on a web server. But if there's any Broken Link, all the Response Codes atart with 400. 400+ codes are Broken Links.
+
+
+
+<!-- blank line -->
+<br>
+
+### Dropdowns
+
+
+
