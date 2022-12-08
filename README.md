@@ -161,11 +161,14 @@ Normally, when I get the URL, I directly open the browser. Manually, I send the 
 
 But the 'requests' module hits the URL to the server from the backend, not frontend. I send the URL to the server directly through the 'requests' module. When I send the Request, sometimes the communication may happen from both the frontend and backend, or Client and Server. There are chances of _Network Exceptions_ getting thrown.  When working between Client and Server, these exceptions that return by default. To avoid them, only put the Response Statement in the try-catch block as an exception handler. Inside the 'except' block there's nothing, so put 'None'.
 
-The actual 'request' module from Pythin is mostly used for API Testing.
+The actual 'request' module from Python is mostly used for API Testing.
+
 
 ### Dropdowns		
+
+Dropdown is not a typical single web element. It's handled in a different way with the pre-defined Selenium Select() class. Dropdown is a _select_ tag element which contains multiple _option_ tag web elements. I can select one of the options. Can perform various operations on a dropdown.
 	
-I pass the dropdown element inside the Select() class. And for the Select() class, I create an object called 'drp_country'. I use this object to select the oprions from the dropdown.
+I pass the dropdown element inside the Select() class. And for the Select() class, I create an object called 'drp_country'. I use this object to select the options from the dropdown.
 	
 Import the Select() class package:
 	
@@ -173,10 +176,10 @@ Import the Select() class package:
 	
 There are many Select() options. The most popular one is the .select_by_visible_text() method. I specify which value I want from the dropdown. Visible text is whatever text is visible on the web page. The text values are case sensitive. Specify the value exactly as it shows on the page, eg, "Macau" (inner text between opening and closing tags).
 
-Dropdown:
--  contains multiple options, where I select one of the options
-- can perform various operations on a dropdown
-- not a typical single web element
-- is a <select> tag element which contains multiple <option> tag web elements
-- handled a different way with the pre-defined Selenium Select() class
-	
+Another method is _.select_by_valuue()_. 'value' is actually one of the attributes of the <option> tag. I can only see this value in HTML. Sometimes 'visible_text' and 'value' look the same, but they are not. 'value' means I have to capture it from HTML.
+
+Another method is _.select_by_index()_. I can't capture this index anywhere in HTML, so I have to count it from the page itself.
+
+Most of the time, I use the _.select_by_visible_text()_ method, because the 'visible_text' is alwayd there.
+Sometimes, the 'value' attribute is absent, hence I can't use it then.
+'index' is my assumption, I can give any index and select any option.
