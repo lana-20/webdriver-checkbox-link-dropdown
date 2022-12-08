@@ -155,12 +155,30 @@ Also, import the 'requests' package:
 	
 I have to hit the link, captured in the for loop, to the server and capture the status. Based on the status code number, I decide if it's a Broken or a Valid (normal) Link. From each link, I extract the _href_ attribute value, which gives me the actual URL. Send this URL to the server, and the server responds with the Response Status Code. To hit the Request to the server, the 'requests' module comes into picture. From the module I call the method _.head()_ and pass the URL into it. I store the server's Response in a variable called 'response'. Upon receiving the response, I verify the status code. If the code >= 400, the link is Broken. Else, the link is Valid. For each found Broken Link, I increment the 'count' by 1.
 	
-	
+The 'requests' module does not click on the URL, open it in the browser, do any of the web operations. Because this is purely API testing related stuff. Internally, I'm passing this URL as a Request to (hit) the server.
 
-<!-- blank line -->
-<br>
+Normally, when I get the URL, I directly open the browser. Manually, I send the Request through the Application. through the Browser. Also, I get my Response back only through the Browser. Eg, when I type 'google.com', I request the server to provide me with the google.com page. I ask the server to provide the Response as a web page by providing the URL. The server does not respond with the actual UI. It provides the response content, which can be viewed via Web Page > View Page Source.
+
+But the 'requests' module hits the URL to the server from the backend, not frontend. I send the URL to the server directly through the 'requests' module. When I send the Request, sometimes the communication may happen from both the frontend and backend, or Client and Server. There are chances of _Network Exceptions_ getting thrown.  When working between Client and Server, these exceptions that return by default. To avoid them, only put the Response Statement in the try-catch block as an exception handler. Inside the 'except' block there's nothing, so put 'None'.
+
+The actual 'request' module from Pythin is mostly used for API Testing.
 
 ### Dropdowns
+
+Dropdowns:
+- contain multiple options, where I select one of the options
+- can perform various operations on a dropdown
+- not a typical single web element
+- is a <select> tag element which contains multiple <option> tag web elements
+- handled a different way with the pre-defined Selenium Select() class
+	
+I pass the dropdown element inside the Select() class. And for the Select() class, I create an object called 'drp_country'. I use this object to select the oprions from the dropdown.
+	
+Import the Select() class package:
+	
+	from selenium.webdriver.support.select import Select
+
+There are many Select() options. The most popular one is the .select_by_visible_text() method. I specify which value I want from the dropdown. Visible text is whatever text is visible on the web page. The text values are case sensitive. Specify the value exactly as it shows on the page, eg, "Macau" (inner text between opening and closing tags).
 
 
 
