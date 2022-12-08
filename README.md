@@ -153,7 +153,7 @@ Also, import the 'requests' package:
 	
 	print("Total number of Broken Links:", count)
 	
-	
+I have to hit the link, captured in the for loop, to the server and capture the status. Based on the status code number, I decide if it's a Broken or a Valid (normal) Link. From each link, I extract the _href_ attribute value, which gives me the actual URL. Send this URL to the server, and the server responds with the Response Status Code. To hit the Request to the server, the 'requests' module comes into picture. From the module I call the method _.head()_ and pass the URL into it. I store the server's Response in a variable called 'response'. Upon receiving the response, I verify the status code. If the code >= 400, the link is Broken. Else, the link is Valid. For each found Broken Link, I increment the 'count' by 1.
 	
 	
 
