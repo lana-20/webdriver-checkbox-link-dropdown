@@ -163,22 +163,20 @@ But the 'requests' module hits the URL to the server from the backend, not front
 
 The actual 'request' module from Pythin is mostly used for API Testing.
 
-### Dropdowns
-
-Dropdowns:
-- contain multiple options, where I select one of the options
-- can perform various operations on a dropdown
-- not a typical single web element
-- is a <select> tag element which contains multiple <option> tag web elements
-- handled a different way with the pre-defined Selenium Select() class
+### Dropdowns		
 	
 I pass the dropdown element inside the Select() class. And for the Select() class, I create an object called 'drp_country'. I use this object to select the oprions from the dropdown.
 	
 Import the Select() class package:
 	
 	from selenium.webdriver.support.select import Select
-
+	
 There are many Select() options. The most popular one is the .select_by_visible_text() method. I specify which value I want from the dropdown. Visible text is whatever text is visible on the web page. The text values are case sensitive. Specify the value exactly as it shows on the page, eg, "Macau" (inner text between opening and closing tags).
 
-
-
+Dropdown:
+-  contains multiple options, where I select one of the options
+- can perform various operations on a dropdown
+- not a typical single web element
+- is a <select> tag element which contains multiple <option> tag web elements
+- handled a different way with the pre-defined Selenium Select() class
+	
