@@ -183,3 +183,18 @@ Another method is _.select_by_index()_. I can't capture this index anywhere in H
 Most of the time, I use the _.select_by_visible_text()_ method, because the 'visible_text' is alwayd there.
 Sometimes, the 'value' attribute is absent, hence I can't use it then.
 'index' is my assumption, I can give any index and select any option.
+
+
+
+
+Suppose I want to find the total number of options that are available. Use another method _.options_:
+	
+	all_options = drp_country.options
+	print(len(all_options))
+
+Now I want to print all 242 options in my window. Again, I have to write a loop statement:
+	
+	for option in all_options:
+		print(option.text)
+
+_.text_ extracts the text value of each option.
