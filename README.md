@@ -198,3 +198,21 @@ Now I want to print all 242 options in my window. Again, I have to write a loop 
 		print(option.text)
 
 _.text_ extracts the text value of each option.
+
+
+Requirement / Interview Questions: Select a dropdown option without built-in Select() functions, such as:
+
+	drp_country.select_by_visible_text("Macau")
+	drp_country.select_by_value("10")
+	drp_country.select_by_index("16")
+
+Use _break_ to break out of the loop, since there's no need to iterate through the rest of the option.text values.
+
+	for option in all_options:
+		if option.text == "Macau":
+			option.click()
+			break
+
+Whenever I work on a dropdown with a _select_ tag, these are the ways I can handle it. Sometimes I may not see the _select_ tag, but rather a _div_ or a _button_ tag. In those cases, I don't use the Select() class. I directly write one common Xpath for all options.
+
+	all_options = driver.find_elements(By.XPATH, "//*[@id='input-country']/option")
